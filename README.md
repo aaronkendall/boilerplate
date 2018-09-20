@@ -1,5 +1,5 @@
 # Node Express, React and Redux Boilerplate to get up and running quickly!
-Simple boilerplate using Node, Express and set up to use some vanilla JavaScript as well as React on the frontend with an environment ready webpack 2 config. Thrown React in there as well in case the use case requires it but you can always just throw it out; or alternatively use it if you prefer.
+Simple boilerplate using Node, Express and set up to use some vanilla JavaScript as well as React with SSR with an environment ready webpack 4 config. Thrown React in there as well in case the use case requires it but you can always just throw it out; or alternatively use it if you prefer.
 
 ## Why?
 Whenever I start new projects I always spend time messing around getting things set up so thought instead if I keep this updated I've always got a good place to start! Feel free to fork / edit and make your own implementations, it's just a basis for how I like to start off smaller projects and freelance work.

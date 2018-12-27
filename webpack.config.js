@@ -1,8 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const environment = process.env.NODE_ENV || 'development'
 
 const plugins = {
@@ -26,12 +24,11 @@ module.exports = {
         parallel: true,
         sourceMap: isDevelopment // set to true if you want JS source maps
       }),
-      new OptimizeCSSAssetsPlugin({})
+      // new OptimizeCSSAssetsPlugin({})
     ]
   },
   entry: {
-      index: "./src/app/index.js",
-      style: "./src/app/styles/main.scss"
+      index: "./src/app/index.js"
   },
   output: {
       path: path.resolve(__dirname, './src/server/public/build'),
@@ -51,31 +48,32 @@ module.exports = {
         },
         {
             test: /.json?$/,
+            exclude: /node_modules/,
             use: 'json-loader'
         },
-        {
-          test: /\.scss$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'sass-loader'
-          ]
-        }
+        // {
+        //   test: /\.scss$/,
+        //   use: [
+        //     MiniCssExtractPlugin.loader,
+        //     'css-loader',
+        //     'sass-loader'
+        //   ]
+        // }
       ]
   },
   resolve: {
-      extensions: ['.js', '.jsx', '.scss'],
+      extensions: ['.js', '.jsx'],
       modules: [
           'node_modules',
           path.resolve(__dirname, './node_modules')
       ]
   },
   plugins: [
-    ...plugins[environment],
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
+    ...plugins[environment]
+    // new MiniCssExtractPlugin({
+    //   filename: "[name].css",
+    //   chunkFilename: "[id].css"
+    // })
   ],
   watch: isDevelopment,
   mode: environment
